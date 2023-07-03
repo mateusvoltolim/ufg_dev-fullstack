@@ -21,9 +21,14 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.NumberField;
+import com.vaadin.flow.spring.annotation.SpringComponent;
+import com.vaadin.flow.spring.annotation.UIScope;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@SpringComponent
+@UIScope
 public class ApartamentoLayout extends VerticalLayout implements EventReceiver {
 
     private final ApartamentoService apartamentoService;

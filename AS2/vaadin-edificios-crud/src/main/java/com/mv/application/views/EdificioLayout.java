@@ -19,7 +19,11 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.spring.annotation.SpringComponent;
+import com.vaadin.flow.spring.annotation.UIScope;
 
+@SpringComponent
+@UIScope
 public class EdificioLayout extends VerticalLayout {
 
     private final EdificioService service;
@@ -33,7 +37,6 @@ public class EdificioLayout extends VerticalLayout {
         var nomeColumn = this.grid.addColumn(Edificio::getNome).setHeader("Nome");
         var enderecoColumn = this.grid.addColumn(Edificio::getEndereco).setHeader("Endereço");
 
-
         createEditorColumn();
         createBinder(nomeColumn, enderecoColumn);
 
@@ -46,13 +49,12 @@ public class EdificioLayout extends VerticalLayout {
         );
     }
 
-    public EdificioLayout addReceiverToGridSelection(Component component) {
+    public void addReceiverToGridSelection(Component component) {
         this.grid.addSelectionListener(selection ->
             ComponentUtil.fireEvent(component,
                 new GridEdificioEventSelection(component, selection.getFirstSelectedItem().orElse(null))
             )
         );
-        return this;
     }
 
     private void createBinder(Grid.Column<Edificio> nomeColumn, Grid.Column<Edificio> enderecoColumn) {

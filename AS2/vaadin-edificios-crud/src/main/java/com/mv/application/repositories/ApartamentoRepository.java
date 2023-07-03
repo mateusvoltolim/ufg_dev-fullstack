@@ -11,4 +11,5 @@ import java.util.List;
 public interface ApartamentoRepository extends ListCrudRepository<Apartamento, Long> {
 
     List<Apartamento> findApartamentoByEdificioId(Long id);
+
 }
